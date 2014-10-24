@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024200147) do
+ActiveRecord::Schema.define(version: 20141024202205) do
+
+  create_table "project_types", force: true do |t|
+    t.text     "type"
+    t.text     "license"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "leader"
@@ -21,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141024200147) do
     t.text     "long_description"
     t.integer  "likes"
     t.integer  "dislikes"
-    t.float    "weight"
+    t.float    "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
