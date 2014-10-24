@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :skills
   resources :projects
+  resources :users, only: :index
 
 end
