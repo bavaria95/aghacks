@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20141024202205) do
     t.text     "team"
     t.text     "short_description"
     t.text     "long_description"
-    t.integer  "likes"
-    t.integer  "dislikes"
-    t.float    "rank"
+    t.integer  "likes", 				default: 0, null: false
+    t.integer  "dislikes", 				default: 0, null: false
+    t.float    "rank", 					default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
