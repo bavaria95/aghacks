@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  leader: MyString
+  type_id: 1
+  team: MyText
+  short_description: MyText
+  long_description: MyText
+
+two:
+  leader: MyString
+  type_id: 1
+  team: MyText
+  short_description: MyText
+  long_description: MyText
