@@ -1,5 +1,6 @@
 <h1>Page#index</h1>
 
+<section ng-controller="MainCtrl">
 <% if user_signed_in? %>
   <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
   <%= link_to 'Skills', skills_path %>
@@ -8,12 +9,19 @@
   <%= link_to 'Sign in', new_user_session_path %> |
   <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
-<form class="search ng-pristine ng-valid"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid"> <input type="image" ng-click="searchPostings()"></form>
+<form class="search ng-pristine ng-valid"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid"> <input type="button" value="Search" ng-click="search()"/></form>
 
 <%= link_to 'Add Project', new_project_path %>
+
+<ul >
+    <li ng-repeat="project in projects">
+        <a ng-href="#">{{project.name}}</a>
+    </li>
+</ul>
 
 <br>
 <% @projects.each do |project| %>
   <%= project.name %>
   <%= link_to 'Edit', edit_project_path(project) %>
 <% end %>
+</section>
