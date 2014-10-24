@@ -12,6 +12,12 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
+<section ng-controller="MainCtrl">
+<ul>
+
+</ul>
+</section>
+
 <br>
 <% @projects.each do |project| %>
   <%= project.name %>
