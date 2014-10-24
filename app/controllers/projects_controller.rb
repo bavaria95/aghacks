@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, expect: :show
 	def index
 		@projects = Project.all
     render json: @projects
@@ -50,6 +51,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :team, :long_description)
+    params.require(:project).permit(:name, :team, :long_description, :skills_attributes => [:skil])
   end
 end
