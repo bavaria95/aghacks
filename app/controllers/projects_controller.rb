@@ -11,7 +11,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @creator = current_user
     if @project.save
+      @project.users << @creator
       redirect_to root_path
       flash[:notice] = "Project has been created!"
     else
