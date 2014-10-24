@@ -3,7 +3,6 @@
 
 <% if user_signed_in? %>
   <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-
   <%= link_to 'Skills', skills_path %>
 
 <% else %>
@@ -11,4 +10,10 @@
   <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
 
+<%= link_to 'Add Project', new_project_path %>
 
+<br>
+<% @projects.each do |project| %>
+  <%= project.name %>
+  <%= link_to 'Edit', edit_project_path(project) %>
+<% end %>
