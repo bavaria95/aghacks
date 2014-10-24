@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024204330) do
+ActiveRecord::Schema.define(version: 20141024210159) do
 
   create_table "project_types", force: true do |t|
     t.text     "type"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20141024204330) do
     t.text     "team"
     t.text     "short_description"
     t.text     "long_description"
-    t.integer  "likes"
-    t.integer  "dislikes"
-    t.float    "weight"
+    t.integer  "likes",             default: 0
+    t.integer  "dislikes",          default: 0
+    t.integer  "weight",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
