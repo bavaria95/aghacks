@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 #added gems
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'binding_of_caller'
-gem 'simple_form'
+gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise'
 
 ###
@@ -19,8 +19,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 
 group :development do
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'spring'
 end
