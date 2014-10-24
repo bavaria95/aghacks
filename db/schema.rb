@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024223253) do
+ActiveRecord::Schema.define(version: 20141024233625) do
 
   create_table "project_types", force: true do |t|
     t.text     "type"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141024223253) do
     t.datetime "updated_at"
     t.integer  "role",                   default: 2
     t.integer  "project_id"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
