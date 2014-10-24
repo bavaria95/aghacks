@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024193603) do
+ActiveRecord::Schema.define(version: 20141024200147) do
+
+  create_table "projects", force: true do |t|
+    t.string   "leader"
+    t.integer  "type_id"
+    t.text     "team"
+    t.text     "short_description"
+    t.text     "long_description"
+    t.integer  "likes"
+    t.integer  "dislikes"
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
