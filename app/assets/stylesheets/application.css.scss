@@ -16,3 +16,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.container.form-bg {
+  background-color: white;
+  margin-top: 100px;
+  border-radius: 10px 10px 10px 10px;
+}
