@@ -5,6 +5,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'binding_of_caller'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise'
+gem 'angularjs-rails'
 
 ###
 
