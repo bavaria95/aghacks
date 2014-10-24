@@ -1,5 +1,10 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
   <%= f.input :long_description %>
+  <%= f.fields_for :skills do |builder| %>
+    <%= render 'skill_skills', f: builder %>
+  <% end %>
+  <%= link_to_add_skills "Add Skill", f, :skills %>
+  <br>
   <%= f.submit %>
 <% end %>

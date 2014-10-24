@@ -6,6 +6,7 @@ gem 'binding_of_caller'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise'
 gem 'angularjs-rails'
+gem 'pry'
 
 ###
 

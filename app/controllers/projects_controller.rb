@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, expect: :show
 	def index
 		@projects = Project.all
     render json: @projects
@@ -10,7 +11,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @creator = current_user
     if @project.save
+      @project.users << @creator
       redirect_to root_path
       flash[:notice] = "Project has been created!"
     else
@@ -50,6 +53,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :team, :long_description)
+    params.require(:project).permit(:name, :team, :long_description, :skills_attributes => [:skil])
   end
 end
