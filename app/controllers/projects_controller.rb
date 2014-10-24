@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, expect: :show
+  before_action :authenticate_user!, only: [:create, :edit, :destroy, :new, :update]
 	def index
 		@projects = Project.all
     render json: @projects
