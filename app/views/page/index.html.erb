@@ -6,64 +6,64 @@
 </script>
 <center>
   <header class="myheader">
-    <h1 class='main'>find your hackmate</h1>
+    <h1 class='main'>find your hackmate<span class="alpha"> { alpha }</span></h1>
     <form class="search">
     <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''">
     <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
     <center>
-    <div class="buttons">
-  <% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
-<% else %>
-  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-primary" %>
-  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-primary" %>
-<% end %>
-  <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-primary" %>
-</div>
-
-
-  </center>
-
-</form>
+      <div class="buttons">
+        <% if user_signed_in? %>
+          <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
+        <% else %>
+          <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-primary" %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-primary" %>
+        <% end %>
+          <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-primary" %>
+      </div>
+    </center>
+  </form>
+  </header>
 </center>
 
-</header>
+
 
 <div class='container'>
   <%= flash_messages %>
 </div>
 
-<div style="width:300px; float:left;">
-    Users
-    <ul >
-        <li class="project-overview" ng-repeat="user in main.filteredUsers | orderBy: 'username'" ng-click="main.showUserDetails(user)">
-            <a ng-href="#">{{user.username}}</a>
-        </li>
-    </ul>
+<div id="content-app">
+  <div style="width:300px; float:left;">
+      Users
+      <ul >
+          <li class="project-overview" ng-repeat="user in main.filteredUsers | orderBy: 'username'" ng-click="main.showUserDetails(user)">
+              <a ng-href="#">{{user.username}}</a>
+          </li>
+      </ul>
+  </div>
+
+  <div style="width:300px; float:right;">
+      Projects:
+      <ul >
+          <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
+              <a ng-href="#">{{project.name}}</a>
+          </li>
+      </ul>
+  </div>
+
+  <center><div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
+      <p>Name: {{main.choosenUser.name}}</p>
+      <p>Description: {{main.choosenUser.info | cut:true:10}}</p>
+  </div> </center>
+
+  <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
+      <p>Name: {{main.choosenProject.name}}</p>
+      <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
+      <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
+      <p><%= button_to 'Apply to this project', new_apply_post_path, method: :post, class: 'btn btn-success' %></p>
+  </div>
+
+
+
+
+  </section>
 </div>
-
-<div style="width:300px; float:right;">
-    Projects:
-    <ul >
-        <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
-            <a ng-href="#">{{project.name}}</a>
-        </li>
-    </ul>
-</div>
-
-<center><div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
-    <p>Name: {{main.choosenUser.name}}</p>
-    <p>Description: {{main.choosenUser.info | cut:true:10}}</p>
-</div> </center>
-
-<div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
-    <p>Name: {{main.choosenProject.name}}</p>
-    <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
-    <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
-    <p><%= button_to 'Apply to this project', new_apply_post_path, method: :post, class: 'btn btn-success' %></p>
-</div>
-
-
-
-
-</section>
