@@ -2,25 +2,16 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :authenticate_user!, :only => :token
 
   def new
-      super
-    end
-
+    super
+  end
 
   def create
-    binding.pry
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."
-      redirect_to root_url
-    else
-      render :action => :new
-    end
+    super
   end
 
   def update
     @skills = params[:user][:skills]
     @skills = @skills.split(',')
-    #binding.pry
     current_user.skills.each do |skill|
       skill.destroy
     end

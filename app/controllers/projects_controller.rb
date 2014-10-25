@@ -16,8 +16,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.create(project_params)
     @creator = current_user
-    if @project.save
     #binding.pry
+    if @project.save
       @project.update_attributes(creator: @creator.username)
       redirect_to root_path
       flash[:success] = "Project has been created!"
