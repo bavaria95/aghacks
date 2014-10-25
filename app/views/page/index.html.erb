@@ -8,7 +8,13 @@
   <%= link_to 'Sign in', new_user_session_path %> |
   <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
-<form class="search ng-pristine ng-valid"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid"> <input type="button" value="Search" ng-click="search()"/></form>
+<header class="fullSize">
+
+<form class="search ng-pristine ng-valid"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid">
+  <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="search()" class="search_image" >
+</form>
+
+</header>
 
 <%= link_to 'Add Project', new_project_path %>
 
