@@ -6,13 +6,13 @@
 
         var timer;
         var refreshServer = function () {
-            var delayTime = 10000;
+            var delayTime = 3000;
 
             timer = $timeout(function () {
                 $http.get('/api/users/1').
                     success(function (data) {
                         $log.info(data);
-                        self.projectId = data.project_id;
+                        self.userData = data;
                         refreshServer();
                     }).
                     error(function () {
@@ -23,8 +23,8 @@
 
         refreshServer();
 
-        this.projectId = function(){
-            return self.projectId;
+        this.userData = function(){
+            return self.userData;
         }
     }
     

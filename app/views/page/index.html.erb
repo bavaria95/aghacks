@@ -44,6 +44,10 @@
       </ul>
   </div>
 
+  <div ng-show="main.myProject" ng-click="main.showProjectDetails(main.myProject)">
+     {{main.myProject.name}} + napis
+  </div>
+
   <div class="projects_all">
       <h3 class="users">There <%if Project.all.length > 1 %>are<% else %>is<% end%> <%= Project.all.length %> Project<%if Project.all.length > 1 %>s<% end %></h3>
       <ul >
@@ -66,9 +70,6 @@
     <p><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">Apply to this project</button></p>
 
   </div>
-
-
-
 
   </section>
 </div>

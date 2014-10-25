@@ -38,10 +38,14 @@
         vm.filteredUsers = users;
 
         $scope.$watch(function($scope){
-            console.log(ApplyingProjectService.projectId);
-            return ApplyingProjectService.projectId;
-        }, function(newValue){
-            console.log(newValue);
+            return ApplyingProjectService.userData;
+        }, function(userData){
+            if (userData.is_confirmed) {
+                vm.myProject = _.findWhere(vm.projects, {id: userData.project_id});
+            } else {
+                vm.myProject = undefined;
+            }
+            console.log(userData);
         })
 
         vm.search = function(criteria){
