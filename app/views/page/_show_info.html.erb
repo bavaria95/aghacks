@@ -1,0 +1,13 @@
+<div class="user-details" ng-show="main.choosenUser">
+  <h3 class="users info">More about {{main.choosenUser.username}}</h3>
+    <p class="user-info"><b>Skills:</b> {{main.choosenUser.skills | jointags}}</p>
+  <p class="user-info"><b>Email:</b> {{main.choosenUser.email}}</p>
+  <p class="user-info"><b>More about user:</b> <span ng-bind-html="main.choosenUser.info | linky"></span></p>
+</div>
+
+<div class="project-details" ng-show="main.choosenProject">
+    <h3 class="users info">More about {{main.choosenProject.name}} Project</h3>
+    <p class="user-info"><b>Required skills:</b> {{main.choosenProject.skills | jointags}}</p>
+  <p class="user-info"><b>Description:</b> <span ng-bind-html="main.choosenProject.info | linky"></span></p>
+  <p class="user-info" ng-hide="main.isMyProject"><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">{{main.caption}}</button></p>
+</div>

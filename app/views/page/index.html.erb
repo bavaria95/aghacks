@@ -1,85 +1,14 @@
 <section ng-controller="MainCtrl as main">
-<script type="text/javascript">
-// <%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!",:time =>2000) %>
 
+  <%= render 'header' %>
+  <%= render 'line_and_flash' %>
 
-</script>
-<center>
-  <header class="myheader">
-    <h1 class='main'>find your hackmate<span class="alpha"> { alpha }</span></h1>
-    <form class="search">
-    <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''" class="main-input">
-    <input type="image" src="http://oi60.tinypic.com/2vmuky8.jpg" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
-    <center>
-      <div class="buttons">
-        <% if user_signed_in? %>
-          <% if current_user.project == nil %>
-            <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-custom", remote: true %>
-          <% else %>
-            <%= link_to 'Edit Your Project', edit_project_path(@project), class: 'btn btn-large btn-custom', remote: true %>
-          <% end %>
-          <%= link_to 'Edit your profile', edit_user_registration_path(current_user), class: "btn btn-large btn-custom" %>
-          <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-custom", :method => :delete %>
-          <br>
-          <br>
-          <p class="login-info">Logged as <%= current_user.username %> (<%= current_user.email %>)</p>
-        <% else %>
-          <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-custom" %>
-          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-custom" %>
-          <%= link_to 'Sign In with Facebook', '/auth/facebook', class: "btn btn-large btn-custom" %>
-        <% end %>
+  <div id="content-app">
 
-      </div>
-    </center>
-  </form>
-  </header>
-</center>
-
-<center>
-  <%= image_tag('line.png', class: 'line') %>
-</center>
-
-<div class='container'>
-  <%= flash_messages %>
-</div>
-
-<div id="content-app">
-  <div class="users_all">
-      <h3 class="users">There <%if User.all.length > 1 %>are<% else %>is<% end %> <%= User.all.length %> free User<%if User.all.length > 1 %>s<% end %></h3>
-      <ul >
-          <li class="project-overview" ng-repeat="user in main.filteredUsers | filter : main.userContains | orderBy: 'username'" ng-click="main.showUserDetails(user)">
-              <a ng-href="#" class='user-nickname'>{{user.username}}</a>
-          </li>
-      </ul>
-  </div>
-
-  <div ng-show="main.myProject" ng-click="main.showProjectDetails(main.myProject)">
-     {{main.myProject.name}} + napis
-  </div>
-
-  <div class="projects_all">
-      <h3 class="users">There <%if Project.all.length > 1 %>are<% else %>is<% end %> <%= Project.all.length %> free Project<%if Project.all.length > 1 %>s<% end %></h3>
-      <ul >
-          <li class="project-overview" ng-repeat="project in main.filteredProjects | filter : main.projectContains | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
-              <a ng-href="#" class='user-nickname'>{{project.name}}</a>
-          </li>
-      </ul>
-  </div>
-
-  <div class="user-details" ng-show="main.choosenUser">
-    <h3 class="users info">More about {{main.choosenUser.username}}</h3>
-      <p class="user-info"><b>Skills:</b> {{main.choosenUser.skills | jointags}}</p>
-    <p class="user-info"><b>Email:</b> {{main.choosenUser.email}}</p>
-    <p class="user-info"><b>More about user:</b> <span ng-bind-html="main.choosenUser.info | linky"></span></p>
-  </div>
-
-  <div class="project-details" ng-show="main.choosenProject">
-      <h3 class="users info">More about {{main.choosenProject.name}} Project</h3>
-      <p class="user-info"><b>Required skills:</b> {{main.choosenProject.skills | jointags}}</p>
-    <p class="user-info"><b>Description:</b> <span ng-bind-html="main.choosenProject.info | linky"></span></p>
-    <p class="user-info" ng-hide="main.isMyProject"><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">{{main.caption}}</button></p>
+    <%= render 'users' %>
+    <%= render 'projects' %>
+    <%= render 'show_info' %>
 
   </div>
 
-  </section>
-</div>
+</section>

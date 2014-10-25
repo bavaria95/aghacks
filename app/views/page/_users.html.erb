@@ -1,0 +1,12 @@
+<div class="users_all">
+    <h3 class="users">There <%if User.all.length > 1 %>are<% else %>is<% end %> <%= User.all.length %> free User<%if User.all.length > 1 %>s<% end %></h3>
+    <ul >
+        <li class="project-overview" ng-repeat="user in main.filteredUsers | filter : main.userContains | orderBy: 'username'" ng-click="main.showUserDetails(user)">
+            <a ng-href="#" class='user-nickname'>{{user.username}}</a>
+        </li>
+    </ul>
+</div>
+
+<div ng-show="main.myProject" ng-click="main.showProjectDetails(main.myProject)">
+   {{main.myProject.name}} + napis
+</div>
