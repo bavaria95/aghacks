@@ -11,9 +11,7 @@
       <% i = project.skills.length %>
       <% i = 1 %>
       <% project.skills.each do |skill| %>
-        {
-        "id": <%= skill.id %>,
-        "skill": "<%= skill.skill %>"}<% if i < project.skills.length %>,<% end %>
+        "<%= skill.skill %>"<% if i < project.skills.length %>,<% end %>
         <% i += 1 %>
       <% end %>
       <% j += 1 %>
