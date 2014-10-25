@@ -1,21 +1,11 @@
-
-<h1>Page#index</h1>
-
 <section ng-controller="MainCtrl as main">
-<% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
 
-<% else %>
-  <%= link_to 'Sign in', new_user_session_path %> |
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
-
-<header class="myheader">
-
-<form class="search">
-  <input type="text" ng-model="main.criteria" placeholder="Look for your HackMate">
+<center><header class="myheader">
+<form class="search" style="magrin:auto 0;">
+  <input type="text" m ng-model="main.criteria" height="50" placeholder="Look for your HackMate">
   <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
 </form>
+</center>
 
 </header>
 
@@ -26,5 +16,13 @@
         <a ng-href="#">{{project.name}}</a>
     </li>
 </ul>
+<% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %> |
+  <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+</section>
 
 

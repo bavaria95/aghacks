@@ -34,7 +34,21 @@
 
 .myheader {
   height: 200px;
-  background-color: white;
+  background-color: #E6E2AF;
   width: 100%;
 }
+.search input[type=text] {
+width: 61%;
+padding: 0 2%;
+height: 61px;
+background: #f2f2f3;
+font-size: 25px;
+color: #565656;
+border-top-left-radius: 7px;
+border-bottom-left-radius: 7px;
+}
 
+
+#test {
+	background-color: #E6E2AF;
+}
