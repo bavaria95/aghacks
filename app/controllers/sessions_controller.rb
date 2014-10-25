@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     @email_request = request_info[:info][:email]
     if User.find_by_email(@email_request) == nil
       user = User.new
-      binding.pry
       user.email = request_info[:info][:email]
       user.username = request_info[:info][:name]
       user.password = (0...16).map { (97 + rand(26)).chr }.join
