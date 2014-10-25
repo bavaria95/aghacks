@@ -4,9 +4,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid]) || User.create_from_omniauth(auth_hash)
+
+    @user = User.find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid])
+    @user = begin
+      user = User.create_from_omniauth(auth_hash)
+      user.email = "test@test.pl"
+      user.password = "test1234"
+      user.save
+      user
+    end unless @user
     if @user
-      session[:user_id] = @user.id
+      #raise
+      sign_in @user
       redirect_to root_url
     else
       redirect_to root_url
