@@ -2,7 +2,7 @@ module Api
   class UsersController < ActionController::Base
 
     def show
-      render json: Project.find(params[:id])
+      render json: User.find(params[:id])
     end
 
     def apply

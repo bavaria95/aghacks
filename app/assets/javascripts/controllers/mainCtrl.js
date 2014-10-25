@@ -20,7 +20,7 @@
         });
     }
 
-    function MainCtrl($resource, ProjectRegisterService) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService) {
         var vm = this;
 
         vm.showProjectDetails = showProjectDetails;
@@ -36,6 +36,13 @@
         var users = usersFactory.query();
         vm.users = users;
         vm.filteredUsers = users;
+
+        $scope.$watch(function($scope){
+            console.log(ApplyingProjectService.projectId);
+            return ApplyingProjectService.projectId;
+        }, function(newValue){
+            console.log(newValue);
+        })
 
         vm.search = function(criteria){
             var projectPredicate = function(proj)

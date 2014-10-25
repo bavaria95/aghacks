@@ -4,7 +4,7 @@
     function ProjectRegisterService($http){
          this.register = function(projectId) {
             console.log('registerd');
-            return $http.post("projects/" + projectId + "/user/11");
+            return $http.post("users/apply/" + projectId);
          }
     }
     

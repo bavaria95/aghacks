@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     resources :projects, only: :show
-    match 'projects/:id/apply', to: 'projects#apply', as: "apply", via: [:post]
+    resources :users, only: :show
+    # match 'projects/:id/apply', to: 'projects#apply', as: "apply", via: [:post]
+    match 'users/apply/:id', to: 'users#apply', as: "apply", via: [:post]
   end
 
 end
