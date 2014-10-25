@@ -1,5 +1,9 @@
 <section ng-controller="MainCtrl as main">
+<script type="text/javascript">
+<%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!") %>
 
+
+</script> 
 <center><header class="myheader">
 <form class="search">
   <input type="text" m ng-model="main.criteria" height="50" placeholder="Find your HackMate">
@@ -14,6 +18,7 @@
 <% end %>
   <%= link_to 'Add Project', new_project_path, class: "btn btn-primary" %>
 </div>
+
 
   </center>
 
