@@ -11,12 +11,14 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
-<ul >
-    <li ng-repeat="project in main.filteredProjects">
-        <a ng-href="#">{{project.name}}</a>
-    </li>
-</ul>
-<% if user_signed_in? %>
+<div>
+    Projects:
+    <ul >
+        <li ng-repeat="project in main.filteredProjects">
+            <a ng-href="#">{{project.name}}</a>
+        </li>
+    </ul>
+</div>s
   <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
 
 <% else %>
@@ -25,4 +27,11 @@
 <% end %>
 </section>
 
-
+<div>
+    Users
+    <ul >
+        <li ng-repeat="user in main.filteredUsers">
+            <a ng-href="#">{{user.username}}</a>
+        </li>
+    </ul>
+</div>
