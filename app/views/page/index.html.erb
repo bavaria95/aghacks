@@ -8,12 +8,12 @@
   <%= link_to 'Sign in', new_user_session_path %> |
   <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
-<form class="search ng-pristine ng-valid"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid"> <input type="button" value="Search" ng-click="search()"/></form>
+<form class="search"><input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid"> <input type="button" value="Search" ng-click="search(criteria)"/></form>
 
 <%= link_to 'Add Project', new_project_path %>
 
 <ul >
-    <li ng-repeat="project in projects">
+    <li ng-repeat="project in filteredProjects">
         <a ng-href="#">{{project.name}}</a>
     </li>
 </ul>
