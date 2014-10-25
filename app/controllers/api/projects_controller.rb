@@ -7,11 +7,10 @@ module Api
 
     def apply
       if request.post?
-        user = params[:user_id]
         project = params[:id]
 
         @project_find = Project.find(project)
-        @user_find = User.find(user)
+        @user_find = current_user
 
         if @project_find.apply_id == nil && @user_find.apply_id == nil
           @apply = Apply.create

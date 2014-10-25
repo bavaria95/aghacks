@@ -3,13 +3,15 @@
 <%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!",:time =>2000) %>
 
 
-</script> 
-<center><header class="myheader">
-<form class="search">
-  <input type="text" m ng-model="main.criteria" height="50" placeholder="Find your HackMate" onFocus="value=''">
-  <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
-  <center>
-  <div class="buttons">
+</script>
+<center>
+  <header class="myheader">
+    <h1 class='main'>find your hackmate</h1>
+    <form class="search">
+    <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''">
+    <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
+    <center>
+    <div class="buttons">
   <% if user_signed_in? %>
   <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
 <% else %>

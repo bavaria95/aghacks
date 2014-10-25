@@ -16,6 +16,7 @@
  */
 
 @import 'bootstrap';
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 .container.form-bg {
   background-color: white;
@@ -24,7 +25,8 @@
 }
 
 .search_image {
-  margin-left: -4px;
+  margin-left: -10px;
+  height: 63px;
 }
 
 .ng-scope {
@@ -35,6 +37,7 @@
   height: 200px;
   background-color: #48E8DE;
   width: 100%;
+  margin-top: -10px;
 }
 
 .search input[type=text] {
@@ -90,12 +93,12 @@ vertical-align: top;
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  
+
 }
 
 .project-details {
-  
- 
+
+
   display: block;
   margin-bottom: 10px;
   padding: 12px 0;
@@ -104,8 +107,8 @@ vertical-align: top;
   height: 30px;
 }
 .user-details {
-  
-  
+
+
   display: block;
   margin-bottom: 10px;
   padding: 12px 0;
@@ -116,4 +119,13 @@ vertical-align: top;
 
 .alert {
   margin-top: 10px;
+}
+
+.search {
+  padding-top: 20px;
+}
+
+h1.main {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 46px;
 }
