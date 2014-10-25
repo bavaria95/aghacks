@@ -11,7 +11,7 @@
         });
     }
 
-    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory, ProjectsFactory) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory, ProjectsFactory, ColorTagService) {
         var vm = this;
 
         vm.projectContains = projectContains;
@@ -20,6 +20,7 @@
         vm.showProjectDetails = showProjectDetails;
         vm.showUserDetails = showUserDetails;
         vm.applyToProject = ProjectRegisterService.register;
+        vm.getButtonColor = ColorTagService.getButtonColor;
 
         UsersFactory.getUsers()
           .then(function () {
@@ -104,6 +105,18 @@
             }
 
             vm.choosenProject = undefined;
+        }
+
+        vm.colorCounter = 0;
+
+        function getButtonColor(){
+            vm.colorCounter++;
+
+            if (vm.colorCounter % 2 === 0) {
+                return ""
+            };
+
+            return "btn-danger"
         }
     }
     

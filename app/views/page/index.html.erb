@@ -50,9 +50,8 @@
           <li class="project-overview" ng-repeat="user in main.filteredUsers | filter : main.userContains | orderBy: 'username'" ng-click="main.showUserDetails(user)">
               <a ng-href="#" class='user-nickname'>
                 {{user.username}}
-                <button class="btn btn-warning btn-mini small-tag">cpp</button>
-
-                <button class="btn btn-info btn-mini small-tag" ng-repeat="skill in user.skills">{{skill}}</button>
+                <span ng-repeat-start="skill in user.skills" ><button ng-class="main.getButtonColor(skill)" class="btn btn-mini small-tag">{{skill}}</button></span>
+                <span ng-repeat-end></span>
               </a>
           </li>
       </ul>
