@@ -21,10 +21,20 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
-<ul >
-    <li ng-repeat="project in main.filteredProjects">
-        <a ng-href="#">{{project.name}}</a>
-    </li>
-</ul>
+<div>
+    Projects:
+    <ul >
+        <li ng-repeat="project in main.filteredProjects">
+            <a ng-href="#">{{project.name}}</a>
+        </li>
+    </ul>
+</div>
 
-
+<div>
+    Users
+    <ul >
+        <li ng-repeat="user in main.filteredUsers">
+            <a ng-href="#">{{user.username}}</a>
+        </li>
+    </ul>
+</div>
