@@ -1,9 +1,53 @@
-User email: <%= @id.email %> <br>
+<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+        
+      	 <% if current_user == @id %>
+           <A href="edit.html" >Edit Profile</A>
 
-User name: <%= @id.username %> <br>
+        	<A href="edit.html" >Logout</A>
+        <% end %>
+       <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >  
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @id.username%></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                
+                
+                        
+                        <center><td> <td>Email :  </td> <%= @id.email%>  </td></center>
+                        <center><td> <td>Date of registration :  </td> <%= @id.created_at%>  </td></center>
+                        <center><td> <td>Skills :  </td> <% @id.skills.each do |skill| %>
+                        <span class="label label-info"><%= skill.skill %></span>
+                        <% end %>  </td></center>
+                        <center><td> <td>Last seen :  </td> <%= @id.last_sign_in_at%>  </td></center>
+                        <% if @id.role == 1 %>
+                          <center><td>  Creator of project № <%= @id.project_id%>  </td></center>
+                         <%elsif @id.project_id.nil? %>
+                         	<center><td> Is not assigned to any project </td></center>
+                         <% else %>
+                         	<center><td> Assigned to project № <%= @id.project_id%>  </td></center>
+                         <%end%>
 
-User description: <%= @id.info %>
 
-<% if @id == current_user %> <br>
-<%= link_to "Edit profile", edit_skills_path %>
-<% end %>
+
+
+                      </tr>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
