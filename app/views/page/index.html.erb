@@ -11,12 +11,23 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
-<div class="project-details" ng-show="main.choosenProject">
-    Name: {{main.choosenProject.name}}
-    Description: {{main.choosenProject.info}}
+<% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %> |
+  <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+
+<div style="width:300px; float:left;">
+    Users
+    <ul >
+        <li ng-repeat="user in main.filteredUsers | orderBy: 'username'">
+            <a ng-href="#">{{user.username}}</a>
+        </li>
+    </ul>
 </div>
 
-<div>
+<div style="width:300px; float:right;">
     Projects:
     <ul >
         <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
@@ -25,20 +36,14 @@
     </ul>
 </div>
 
-<% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to 'Sign in', new_user_session_path %> |
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
+<div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
+    Name: {{main.choosenUser.name}}
+    Description: {{main.choosenUser.info}}
+</div>
 
-<div>
-    Users
-    <ul >
-        <li ng-repeat="user in main.filteredUsers | orderBy: 'username'">
-            <a ng-href="#">{{user.username}}</a>
-        </li>
-    </ul>
+<div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
+    Name: {{main.choosenProject.name}}
+    Description: {{main.choosenProject.info}}
 </div>
 
 </section>
