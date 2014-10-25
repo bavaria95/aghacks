@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy, :new, :update]
 	def index
 		@projects = Project.all
-    render json: @projects
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
 	end
 
   def new

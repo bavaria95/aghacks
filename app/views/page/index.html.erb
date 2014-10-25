@@ -1,3 +1,4 @@
+
 <h1>Page#index</h1>
 
 <section ng-controller="MainCtrl">
@@ -9,7 +10,7 @@
   <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
 
-<header class="fullSize">
+<header class="myheader">
 
 <form class="search ng-pristine ng-valid">
   <input type="text" ng-model="criteria" placeholder="Look for your HackMate" class="ng-pristine ng-valid">
@@ -20,9 +21,11 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
-<ul >
-    <li ng-repeat="project in filteredProjects">
-        <a ng-href="#">{{project.name}}</a>
-    </li>
-</ul>
+<div id="content">
+  <ul>
+      <li ng-repeat="project in filteredProjects">
+          <a ng-href="#">{{project.name}}</a>
+      </li>
+  </ul>
+</div>
 

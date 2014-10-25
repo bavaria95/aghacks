@@ -1,0 +1,24 @@
+{
+  "products":
+  [
+    <% j = 0 %>
+    <% @projects.each do |project| %>
+    {
+      "id": <%= project.id %>,
+      "name": "<%= project.name %>",
+      "info": "<%= project.long_description %>",
+      "skills": [
+      <% i = project.skills.length %>
+      <% i = 1 %>
+      <% project.skills.each do |skill| %>
+        {
+        "id": <%= skill.id %>,
+        "skill": "<%= skill.skill %>"}<% if i < project.skills.length %>,<% end %>
+        <% i += 1 %>
+      <% end %>
+      <% j += 1 %>
+      ]
+    }<% if j < @projects.length %>,<% end %>
+    <% end %>
+  ]
+}
