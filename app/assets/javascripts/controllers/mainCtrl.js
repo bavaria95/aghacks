@@ -20,11 +20,12 @@
         });
     }
 
-    function MainCtrl($resource) {
+    function MainCtrl($resource, ProjectRegisterService) {
         var vm = this;
 
         vm.showProjectDetails = showProjectDetails;
         vm.showUserDetails = showUserDetails;
+        vm.applyToProject = ProjectRegisterService.register;
 
         var projectsFactory = $resource('/projects.json/:id', { id: '@id' });
         var projects = projectsFactory.query();

@@ -6,7 +6,7 @@
     }
     
     angular
-        .module('app', ['ngResource', 'bootstrap-tagsinput'])
+        .module('app', ['ngResource', 'bootstrap-tagsinput', 'ngSanitize'])
         .config(appConfig);
     
 })();
