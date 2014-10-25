@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
     if @user.save
       redirect_to root_path
-      flash[:success] = "Project has been updated!"
+      flash[:success] = "User has been updated!"
     else
       redirect_to root_path
       flash[:danger] = "An error has accured, didn't you fill all fields?"

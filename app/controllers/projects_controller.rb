@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy, :new, :update]
 	def index
-		@projects = Project.all
+		@project = Project.find_by_creator(current_user.username)
 
     respond_to do |format|
       format.html

@@ -1,2 +1,2 @@
-<% @projects.each do |project| %>
-<% end %>
+<%= @project.name %> <br>
+<%= link_to "Edit project", edit_project_path(@project), remote: true %>

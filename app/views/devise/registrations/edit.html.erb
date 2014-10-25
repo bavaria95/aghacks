@@ -40,6 +40,9 @@
     });
 
 </script>
+
+Info: <%= current_user.info %> <br>
+<%= link_to 'Edit your description', edit_user_path(current_user), remote: true %>  
   </div>
 
   <div class="form-actions">
