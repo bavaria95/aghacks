@@ -16,8 +16,14 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.create(project_params)
     @creator = current_user
+    @skills = params[:project][:skills]
+    @skills = @skills.split(',')
+
     #binding.pry
     if @project.save
+      for i in 0..@skills.length-1
+        @project.skills << Skill.create(skill: @skills[i])
+      end
       @project.update_attributes(creator: @creator.username)
       redirect_to root_path
       flash[:success] = "Project has been created!"

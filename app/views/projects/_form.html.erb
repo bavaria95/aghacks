@@ -3,9 +3,8 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name, class: "form-control" %>
   <%= f.input :long_description %>
+  <%= f.input :skills, input_html: { id: "user_skills" } %>
 
-  Skills<br>
-  <input id="tags-input" type="text" value="" data-role="tagsinput" />
     <script>
     var citynames = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -20,7 +19,7 @@
     });
     citynames.initialize();
 
-    $('#tags-input').tagsinput({
+    $('#user_skills').tagsinput({
       typeaheadjs: {
         name: 'citynames',
         displayKey: 'name',
@@ -28,7 +27,8 @@
         source: citynames.ttAdapter()
       }
     });
-    </script>
+
+</script>
 
   <br>
   <%= f.submit 'Create Project', class: 'btn btn-custom product-button' %>

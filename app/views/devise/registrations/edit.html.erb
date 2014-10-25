@@ -16,11 +16,6 @@
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
     <%= f.input :skills, hint: "we need your current password to confirm your changes", required: true, id: "user_skills", input_html: {value: current_user.skills.map(&:skill).join(",") } %>
 
-    <% current_user.skills.each do |skill| %>
-      <%= skill.skill %>
-      <br>
-    <% end %>
-
 <script>
     var citynames = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
