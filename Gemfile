@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 #added gems
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'binding_of_caller'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise'
@@ -22,6 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem "gritter", "1.1.0"
 
 
 group :development do
