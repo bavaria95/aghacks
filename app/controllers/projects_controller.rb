@@ -44,7 +44,19 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
+    @skills = params[:project][:skills]
+    @skills = @skills.split(',')
+
+    @project.skills.each do |skill|
+      skill.destroy
+    end
+
+    @project.skills = []
+
     if @project.save
+      for i in 0..@skills.length-1
+        @project.skills << Skill.create(skill: @skills[i])
+      end
       redirect_to root_path
       flash[:success] = "Project has been updated!"
     else
