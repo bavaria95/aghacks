@@ -11,12 +11,12 @@
   <center>
   <div class="buttons">
   <% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-primary", :method => :delete %>
+  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
 <% else %>
-  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-primary" %>
-  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-primary" %>
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-primary" %>
 <% end %>
-  <%= link_to 'Add Project', new_project_path, class: "btn btn-primary" %>
+  <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-primary" %>
 </div>
 
 
