@@ -34,7 +34,7 @@
 
 .myheader {
   height: 200px;
-  background-color: #E6E2AF;
+  background-color: #48E8DE;
   width: 100%;
 }
 .search input[type=text] {
@@ -52,14 +52,32 @@ vertical-align: top;
 }
 
 #test {
-	background-color: #E6E2AF;
+	background-color: #48E8DE;
 }
 
 .project-overview {
-    widht:300px;height:80px;
-    border: solid blue;
-}
+border-left: 5px solid;
+background: #98A9E8;
+display: block;
+margin-bottom: 10px;
+padding: 12px 0;
+width: 100%;
+float: left;
+height: 30px;
 
+font-size: 15px;
+font-weight: 600;
+color: #282828;
+display: inline-block;
+margin-top: 6px;
+}
 .project-details {
-    border: solid green;
+border-left: 5px solid;
+background: #98A9E8;
+display: block;
+margin-bottom: 10px;
+padding: 12px 0;
+width: 100%;
+float: left;
+height: 30px;
 }
