@@ -1,1 +1,7 @@
-<p><%= @identificator.id %></p>
+<%= @id.email %> <br>
+
+<%= @id.username %>
+
+<% if @id == current_user %> <br>
+<%= link_to "Edit profile", edit_skills_path %>
+<% end %>

@@ -1,0 +1,8 @@
+Total skills in user: <%= @user_skills.count %> <br>
+<% @user_skills.each do |skill| %>
+<%= skill.skill %> <br>
+<% end %>
+
+<br>
+
+<%= button_to 'Add new skill', new_edit_skill_path, method: :get, remote: true %>

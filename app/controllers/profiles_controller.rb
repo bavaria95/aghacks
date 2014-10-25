@@ -1,10 +1,9 @@
 class ProfilesController < ApplicationController
   def index
-  	@user = User.find(params[:id])
   end
 
   def show
-  	@identificator = User.find(params[:id])
+    @id = User.find(params[:id])
   end
 
 

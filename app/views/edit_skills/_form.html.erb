@@ -1,0 +1,12 @@
+<div class="container form-bg">
+  <div class="model-header">
+    <h1>New skill</h1>
+  </div>
+  <%= simple_form_for @skill do |f| %>
+    <div class="modal-body"></div>
+      <%= f.input :skill, label: 'Skill name' %>
+    <div class="modal-footer ">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
