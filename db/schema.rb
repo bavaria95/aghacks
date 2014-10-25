@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025160944) do
+ActiveRecord::Schema.define(version: 20141025173054) do
 
   create_table "applies", force: true do |t|
     t.datetime "created_at"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20141025160944) do
     t.integer  "project_id"
     t.string   "username"
     t.text     "info"
-    t.text     "skills"
+    t.string   "skills"
     t.boolean  "is_confirmed"
     t.string   "name"
     t.string   "provider"

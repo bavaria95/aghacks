@@ -18,10 +18,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    binding.pry
     @skills = params[:user][:skills]
     @skills = @skills.split(',')
     #binding.pry
+    current_user.skills.each do |skill|
+      skill.destroy
+    end
+    current_user.skills = []
 
     for i in 0..@skills.length-1
       current_user.skills << Skill.create(skill: @skills[i])
