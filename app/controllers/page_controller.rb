@@ -3,7 +3,9 @@ class PageController < ApplicationController
     #binding.pry
     @projects = Project.all
     @users = User.all
-    @project = Project.find_by_creator(current_user.username)
+    if current_user
+      @project = Project.find_by_creator(current_user.username)
+    end
 
     respond_to do |format|
       format.json
