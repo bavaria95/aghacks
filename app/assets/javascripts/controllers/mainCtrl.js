@@ -3,7 +3,7 @@
 
     function projectContains(project, word) {
         return project.name.indexOf(word) > -1
-            || project.long_description.indexOf(word) > -1
+            || project.info.indexOf(word) > -1
             || containsAnySkill(project.skills, word);
     }
 
