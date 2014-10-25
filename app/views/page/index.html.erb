@@ -1,6 +1,6 @@
 <section ng-controller="MainCtrl as main">
 <script type="text/javascript">
-<%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!",:time =>2000) %>
+// <%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!",:time =>2000) %>
 
 
 </script>
@@ -9,7 +9,7 @@
     <h1 class='main'>find your hackmate<span class="alpha"> { alpha }</span></h1>
     <form class="search">
     <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''">
-    <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
+    <input type="image" src="https://kpqmvq-ch3302.files.1drv.com/y2ptXtBwYRxQUtRsXWiUvJng2RLmuKpoVUfE9be5QDmxLK8Xv_tD8ttkX44Z_iKNRdtKpQns_E5goQUrAvfvyBAcE32PHmuL5q95kTW5Ef32kg/btn-search.png?psid=1" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
     <center>
       <div class="buttons">
         <% if user_signed_in? %>
