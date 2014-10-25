@@ -22,10 +22,6 @@
 
 </header>
 
-<%= link_to 'Add Project', new_project_path %>
-<CENTER>
-</center>
-
 <div class='container'>
   <%= flash_messages %>
 </div>
@@ -57,6 +53,7 @@
     <p>Name: {{main.choosenProject.name}}</p>
     <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
+    <p><button>Apply to this project</button></p>
 </div>
 
 

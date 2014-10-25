@@ -23,6 +23,9 @@
     function MainCtrl($resource) {
         var vm = this;
 
+        vm.showProjectDetails = showProjectDetails;
+        vm.showUserDetails = showUserDetails;
+
         var projectsFactory = $resource('/projects.json/:id', { id: '@id' });
         var projects = projectsFactory.query();
         vm.projects = projects;
@@ -34,21 +37,27 @@
         vm.filteredUsers = users;
 
         vm.search = function(criteria){
-            if (!criteria) 
-                return;
+            var projectPredicate = function(proj)
+            {
+                return projectContains(proj, criteria);
+            }
 
-            vm.filteredProjects = _.filter(vm.projects, function(proj)
-                {
-                    return projectContains(proj, criteria);
-                });
+            var userPredicate = function(user)
+            {
+                return userContains(user, criteria);
+            }
 
-            vm.filteredUsers = _.filter(vm.users, function(user)
-                {
-                    return userContains(user, criteria);
-                });
+            if (!criteria){
+                projectPredicate = function() { return true;}
+                userPredicate = function() { return true;}
+            }
+
+            vm.filteredProjects = _.filter(vm.projects, projectPredicate);
+
+            vm.filteredUsers = _.filter(vm.users, userPredicate);
         }
 
-        vm.showProjectDetails = function(project){
+        function showProjectDetails(project){
             if (!angular.isUndefined(vm.choosenProject) && vm.choosenProject.name === project.name) {
                 vm.choosenProject = undefined;
             } else {
@@ -58,7 +67,7 @@
             vm.choosenUser = undefined;
         }
 
-        vm.showUserDetails = function(user){
+        function showUserDetails(user){
             if (!angular.isUndefined(vm.choosenUser) && vm.choosenUser.username === user.username) {
                 vm.choosenUser = undefined;
             } else {
