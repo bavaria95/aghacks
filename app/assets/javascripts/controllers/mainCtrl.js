@@ -6,16 +6,18 @@
             || project.long_description.indexOf(word) > -1;
     }
 
-    function MainCtrl($scope, $resource) {
+    function MainCtrl($resource) {
+        var vm = this;
+
         var projectsFactory = $resource('/projects.json/:id', { id: '@id' });
         var projects = projectsFactory.query();
 
-        $scope.projects = projects;
+        vm.projects = projects;
 
-        $scope.filteredProjects = projects;
+        vm.filteredProjects = projects;
 
-        $scope.search = function(criteria){
-            $scope.filteredProjects = _.filter($scope.projects, function(proj)
+        vm.search = function(criteria){
+            vm.filteredProjects = _.filter(vm.projects, function(proj)
                 {
                     return projectContains(proj, criteria);
                 });
