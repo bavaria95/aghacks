@@ -1,0 +1,7 @@
+[
+  <% j = 0 %>
+  <% @skills.each do |skill| %>
+   "<%= skill.skill %>"<% j += 1 %><% if j < @skills.length %>,<% end %>
+  <% end %>
+]
+
