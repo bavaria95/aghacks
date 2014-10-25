@@ -1,13 +1,10 @@
-<div class="container">
-  <%= flash_messages %>
-</div>
+<h1>New Project </h1>
 
 <%= simple_form_for @project do |f| %>
   <%= f.input :name, class: "form-control" %>
   <%= f.input :long_description %>
 
-  <br>
-
+  Skills<br>
   <input id="tags-input" type="text" value="" data-role="tagsinput" />
     <script>
     var citynames = new Bloodhound({
@@ -34,5 +31,5 @@
     </script>
 
   <br>
-  <%= f.submit 'Create Project' %>
+  <%= f.submit 'Create Project', class: 'btn btn-custom product-button' %>
 <% end %>
