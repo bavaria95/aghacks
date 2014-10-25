@@ -52,14 +52,15 @@
 
   <center><div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
       <p>Name: {{main.choosenUser.name}}</p>
-      <p>Description: {{main.choosenUser.info | cut:true:10}}</p>
+    <p>Description: {{main.choosenUser.info}}</p>
   </div> </center>
 
   <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
       <p>Name: {{main.choosenProject.name}}</p>
       <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
-      <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
+    <p>Description: <span ng-bind-html="main.choosenProject.info | linky"></span></p>
       <p><%= button_to 'Apply to this project', new_apply_post_path, method: :post, class: 'btn btn-success' %></p>
+    <p><button ng-click="main.applyToProject">Apply to this project</button></p>
   </div>
 
 

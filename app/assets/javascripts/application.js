@@ -17,5 +17,6 @@
 //= require angular
 //= require angular-animate
 //= require angular-resource
+//= require angular-sanitize
 //= require gritter
 //= require_tree .
