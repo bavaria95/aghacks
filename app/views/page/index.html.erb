@@ -9,16 +9,17 @@
     <h1 class='main'>find your hackmate<span class="alpha"> { alpha }</span></h1>
     <form class="search">
     <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''" class="main-input">
-    <input type="image" src="https://kpqmvq-ch3302.files.1drv.com/y2ptXtBwYRxQUtRsXWiUvJng2RLmuKpoVUfE9be5QDmxLK8Xv_tD8ttkX44Z_iKNRdtKpQns_E5goQUrAvfvyBAcE32PHmuL5q95kTW5Ef32kg/btn-search.png?psid=1" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
+    <input type="image" src="http://oi60.tinypic.com/2vmuky8.jpg" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
     <center>
       <div class="buttons">
         <% if user_signed_in? %>
+          <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-custom", remote: true %>
           <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-custom", :method => :delete %>
         <% else %>
           <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-custom" %>
           <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-custom" %>
         <% end %>
-        <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-custom", remote: true %>
+
       </div>
     </center>
   </form>
