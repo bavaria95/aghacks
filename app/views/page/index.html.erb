@@ -79,7 +79,7 @@
       <h3 class="users info">More about {{main.choosenProject.name}} Project</h3>
       <p class="user-info"><b>Required skills:</b> {{main.choosenProject.skills | jointags}}</p>
     <p class="user-info"><b>Description:</b> <span ng-bind-html="main.choosenProject.info | linky"></span></p>
-    <p class="user-info"><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">{{main.caption}}</button></p>
+    <p class="user-info" ng-hide="main.isMyProject"><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">{{main.caption}}</button></p>
 
   </div>
 

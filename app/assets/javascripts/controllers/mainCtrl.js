@@ -39,7 +39,10 @@
             } else {
                 vm.myProject = undefined;
             }
-            console.log(userData);
+
+            if (vm.choosenProject) {
+                refreshCaption();
+            };
         })
 
         function projectContains(project) {
@@ -68,20 +71,26 @@
             vm.choosenUser = undefined;
         }
 
+        function refreshCaption() {
+            vm.caption = 'Apply to this project';
+            if (vm.choosenProject.id === ApplyingProjectService.userData.project_id) {
+                if (ApplyingProjectService.userData.is_confirmed) {
+                    vm.caption = 'Cancel my confirmation';
+                } else {
+                    vm.caption = 'Remove my application';
+                }
+            };
+
+            vm.isMyProject = vm.choosenProject.creator === ApplyingProjectService.userData.username 
+        }
+
         function showProjectDetails(project){
             if (!angular.isUndefined(vm.choosenProject) && vm.choosenProject.id === project.id) {
                 vm.choosenProject = undefined;
             } else {
                 vm.choosenProject = project;
 
-                vm.caption = 'Apply to this project';
-                if (project.id === ApplyingProjectService.userData.project_id) {
-                    if (ApplyingProjectService.userData.is_confirmed) {
-                        vm.caption = 'Cancel my confirmation';
-                    } else {
-                        vm.caption = 'Remove my application';
-                    }
-                };
+                refreshCaption();
             }
 
             vm.choosenUser = undefined;
