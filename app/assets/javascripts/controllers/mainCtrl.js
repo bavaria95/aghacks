@@ -20,8 +20,13 @@
         });
     }
 
-    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory) {
         var vm = this;
+
+        UsersFactory.getUsers()
+          .then(function () {
+            vm.filteredUsers = UsersFactory.filteredUsers;
+          });
 
         vm.showProjectDetails = showProjectDetails;
         vm.showUserDetails = showUserDetails;
@@ -32,10 +37,10 @@
         vm.projects = projects;
         vm.filteredProjects = projects;
 
-        var usersFactory = $resource('/users.json/:id', { id: '@id' });
-        var users = usersFactory.query();
-        vm.users = users;
-        vm.filteredUsers = users;
+        // var usersFactory = $resource('/users.json/:id', { id: '@id' });
+        // var users = usersFactory.query();
+        // vm.users = users;
+        // vm.filteredUsers = users;
 
         $scope.$watch(function($scope){
             return ApplyingProjectService.userData;

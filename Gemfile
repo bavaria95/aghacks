@@ -30,6 +30,6 @@ gem "gritter", "1.1.0"
 
 
 group :development do
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'spring'
 end
