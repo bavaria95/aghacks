@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     @creator = current_user
     if @project.save
       @project.users << @creator
+      binding.pry
       redirect_to root_path
       flash[:notice] = "Project has been created!"
     else
@@ -57,6 +58,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :team, :long_description, :skills_attributes => [:skil])
+    params.require(:project).permit(:name, :team, :long_description, :skills_attributes => [:skill])
   end
 end
