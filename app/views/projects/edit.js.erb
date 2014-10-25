@@ -1,1 +1,3 @@
-<%= render 'form' %>
+m = $('#modal');
+m.html('<%= j(render partial: 'edit', locals: { project: @project }) %>');
+m.modal('show');

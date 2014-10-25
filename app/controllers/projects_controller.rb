@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy, :new, :update]
 	def index
 		@project = Project.find_by_creator(current_user.username)
+    @projects = Project.all
 
     respond_to do |format|
       format.html
@@ -25,6 +26,8 @@ class ProjectsController < ApplicationController
         @project.skills << Skill.create(skill: @skills[i])
       end
       @project.update_attributes(creator: @creator.username)
+      @project.users << @creator
+      #@creator.project = @project
       redirect_to root_path
       flash[:success] = "Project has been created!"
     else
