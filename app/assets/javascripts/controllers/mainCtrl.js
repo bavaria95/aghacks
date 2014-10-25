@@ -47,14 +47,14 @@
                 || containsAnySkill(project.skills, vm.word);
         }
 
-        function userContains(user, word) {
+        function userContains(user) {
             if(!vm.word)
                 return true;
             
-            return user.username.indexOf(vm.word) > -1;
+            return user.username.indexOf(vm.word) > -1
             // TODO Description
-                // || user.long_description.indexOf(word) > -1;
-                // || containsAnySkill(user.skills, word);
+                // || user.long_description.indexOf(vm.word) > -1;
+                || containsAnySkill(user.skills, vm.word);
         }
 
         vm.search = function(criteria){
