@@ -2,7 +2,7 @@
   <div class="model-header">
     <h1>New skill</h1>
   </div>
-  <%= simple_form_for @skill do |f| %>
+  <%= simple_form_for @skill, :url => edit_skills_path do |f| %>
     <div class="modal-body"></div>
       <%= f.input :skill, label: 'Skill name' %>
     <div class="modal-footer ">
