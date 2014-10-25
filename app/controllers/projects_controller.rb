@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    render :show_form
   end
 
   def create
@@ -19,7 +20,6 @@ class ProjectsController < ApplicationController
     @skills = params[:project][:skills]
     @skills = @skills.split(',')
 
-    #binding.pry
     if @project.save
       for i in 0..@skills.length-1
         @project.skills << Skill.create(skill: @skills[i])
@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
       redirect_to root_path
       flash[:success] = "Project has been created!"
     else
-      redirect_to new_project_path
-      flash[:danger] = "An error has accured, didn't you fill all fields?"
+      redirect_to root_path
+      flash[:error] = "An error has accured, maybe fields are blank?"
     end
   end
 
