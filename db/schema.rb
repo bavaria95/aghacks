@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141024233625) do
-=======
-ActiveRecord::Schema.define(version: 20141024231537) do
->>>>>>> c1701cab166318b0c09b79d5dbe447e6acc61e65
 
   create_table "project_types", force: true do |t|
     t.text     "type"
