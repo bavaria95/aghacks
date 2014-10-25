@@ -8,7 +8,7 @@
 
   <br>
 
-  <input type="text" value="Amsterdam,Washington" data-role="tagsinput" />
+  <input id="tags-input" type="text" value="Amsterdam,Washington" data-role="tagsinput" />
     <script>
     var citynames = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -23,7 +23,7 @@
     });
     citynames.initialize();
 
-    $('input').tagsinput({
+    $('#tags-input').tagsinput({
       typeaheadjs: {
         name: 'citynames',
         displayKey: 'name',
