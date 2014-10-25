@@ -1,6 +1,7 @@
 class EditSkillsController < ApplicationController
 	def index
-		@user_skills = current_user.skills
+    @info = current_user.info
+    @user_skills = current_user.skills
 	end
 
 	def new

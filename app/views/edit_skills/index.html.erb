@@ -6,3 +6,7 @@ Total skills in user: <%= @user_skills.count %> <br>
 <br>
 
 <%= button_to 'Add new skill', new_edit_skill_path, method: :get, remote: true %>
+
+Description: <br>
+<%= text_area_tag 'info', @info %>
+<p><%= button_tag "Update info" %></p>
