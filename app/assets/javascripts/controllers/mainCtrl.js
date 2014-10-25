@@ -73,7 +73,7 @@
         }
 
         function showProjectDetails(project){
-            if (!angular.isUndefined(vm.choosenProject) && vm.choosenProject.name === project.name) {
+            if (!angular.isUndefined(vm.choosenProject) && vm.choosenProject.id === project.id) {
                 vm.choosenProject = undefined;
             } else {
                 vm.choosenProject = project;
