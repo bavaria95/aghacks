@@ -1,9 +1,13 @@
 (function () {
     'use strict';
 
+    function compareInsensitive(longText, word){
+        return longText.toUpperCase().indexOf(word.toUpperCase()) > -1;
+    }
+
     function containsAnySkill(skills, word){
         return _.some(skills, function(skill){
-            return skill.indexOf(word) > -1;
+            return compareInsensitive(skill, word);
         });
     }
 
@@ -42,19 +46,20 @@
             if(!vm.word)
                 return true;
             
-            return project.name.indexOf(vm.word) > -1
-                || project.info.indexOf(vm.word) > -1
-                || containsAnySkill(project.skills, vm.word);
+            var result = compareInsensitive(project.name, vm.word)
+                || compareInsensitive(project.info, vm.word)
+                || containsAnySkill(project.skills, vm.word)
+
+            return result;
         }
 
-        function userContains(user, word) {
+        function userContains(user) {
             if(!vm.word)
                 return true;
             
-            return user.username.indexOf(vm.word) > -1;
-            // TODO Description
-                // || user.long_description.indexOf(word) > -1;
-                // || containsAnySkill(user.skills, word);
+            return compareInsensitive(user.username, vm.word)
+                || compareInsensitive(user.info, vm.word)
+                || containsAnySkill(user.skills, vm.word);
         }
 
         vm.search = function(criteria){
