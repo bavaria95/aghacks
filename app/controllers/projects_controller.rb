@@ -16,17 +16,13 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.create(project_params)
     @creator = current_user
-    @apply = Apply.create
     if @project.save
-      @project.users << @creator
       binding.pry
-      @creator.update_attributes(apply_id: @apply.id)
-
-      binding.pry
+      @creator.update_attributes(creator: @creator.nickname)
       redirect_to root_path
       flash[:success] = "Project has been created!"
     else
-      redirect_to root_path
+      redirect_to new_project_path
       flash[:danger] = "An error has accured, didn't you fill all fields?"
     end
   end

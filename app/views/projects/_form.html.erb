@@ -1,5 +1,9 @@
+<div class="container">
+  <%= flash_messages %>
+</div>
+
 <%= simple_form_for @project do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, class: "form-control" %>
   <%= f.input :long_description %>
 
   <br>
@@ -30,5 +34,5 @@
     </script>
 
   <br>
-  <%= f.submit %>
+  <%= f.submit 'Create Project' %>
 <% end %>

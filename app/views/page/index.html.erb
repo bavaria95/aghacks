@@ -8,41 +8,43 @@
   <header class="myheader">
     <h1 class='main'>find your hackmate<span class="alpha"> { alpha }</span></h1>
     <form class="search">
-    <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''">
+    <input type="text" m ng-model="main.criteria" height="50" placeholder="eg. Java Ruby" onFocus="value=''" class="main-input">
     <input type="image" src="https://kpqmvq-ch3302.files.1drv.com/y2ptXtBwYRxQUtRsXWiUvJng2RLmuKpoVUfE9be5QDmxLK8Xv_tD8ttkX44Z_iKNRdtKpQns_E5goQUrAvfvyBAcE32PHmuL5q95kTW5Ef32kg/btn-search.png?psid=1" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
     <center>
       <div class="buttons">
         <% if user_signed_in? %>
-          <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
+          <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-custom", :method => :delete %>
         <% else %>
-          <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-primary" %>
-          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-primary" %>
+          <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-custom" %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-custom" %>
         <% end %>
-          <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-primary" %>
+        <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-custom" %>
       </div>
     </center>
   </form>
   </header>
 </center>
 
-
+<center>
+  <%= image_tag('line.png', class: 'line') %>
+</center>
 
 <div class='container'>
   <%= flash_messages %>
 </div>
 
 <div id="content-app">
-  <div style="width:300px; float:left;">
-      Users
+  <div class="users_all">
+      <h3 class="users">Users</h3>
       <ul >
           <li class="project-overview" ng-repeat="user in main.filteredUsers | orderBy: 'username'" ng-click="main.showUserDetails(user)">
-              <a ng-href="#">{{user.username}}</a>
+              <a ng-href="#" class='user-nickname'>{{user.username}}</a>
           </li>
       </ul>
   </div>
 
-  <div style="width:300px; float:right;">
-      Projects:
+  <div class="projects_all">
+      <h3 class="users">There <%if Project.all.length > 1 %>are<% else %>is<% end%> <%= Project.all.length %> Project<%if Project.all.length > 1 %>s<% end %></h3>
       <ul >
           <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
               <a ng-href="#">{{project.name}}</a>
@@ -50,10 +52,11 @@
       </ul>
   </div>
 
-  <center><div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
-      <p>Name: {{main.choosenUser.name}}</p>
-    <p>Description: {{main.choosenUser.info}}</p>
-  </div> </center>
+  <div class="user-details" ng-show="main.choosenUser">
+    <h3 class="users info">More about {{main.choosenUser.username}}</h3>
+    <p class="user-info">Email: {{main.choosenUser.email}}</p>
+    <p class="user-info">More about user: {{main.choosenUser.info}}</p>
+  </div>
 
   <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
       <p>Name: {{main.choosenProject.name}}</p>
