@@ -58,8 +58,7 @@
                 return true;
             
             return compareInsensitive(user.username, vm.word)
-            // TODO Description
-                // || compareInsensitive(user.long_description, vm.word)
+                || compareInsensitive(user.info, vm.word)
                 || containsAnySkill(user.skills, vm.word);
         }
 
