@@ -80,6 +80,8 @@
                     vm.caption = 'Remove my application';
                 }
             };
+
+            vm.isMyProject = vm.choosenProject.creator === ApplyingProjectService.userData.username 
         }
 
         function showProjectDetails(project){
