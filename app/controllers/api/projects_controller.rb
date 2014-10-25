@@ -19,7 +19,7 @@ module Api
           @user_find.update_attributes(apply_id: @apply.id)
           render json: { status: "ok" }, status: 200
         else
-          render json: { error: "this project is already applied"}, status: 404
+          render json: { error: "this project is already applied"}, status: 400
         end
       end
 
