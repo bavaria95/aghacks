@@ -8,6 +8,9 @@ gem 'devise'
 gem 'angularjs-rails'
 gem 'pry'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'figaro'
 
 ###
 
@@ -27,6 +30,6 @@ gem "gritter", "1.1.0"
 
 
 group :development do
-  #gem 'better_errors'
+  gem 'better_errors'
   gem 'spring'
 end

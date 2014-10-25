@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root 'page#index'
+
+  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   get 'profiles/index'
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
-  root 'page#index'
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :skills
   resources :projects

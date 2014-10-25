@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
   belongs_to :project
   belongs_to :apply
+
+  def self.create_from_omniauth(auth_hash)
+    self.create(provider: auth_hash[:provider],
+                uid: auth_hash[:uid],
+                name: auth_hash[:info][:name])
+  end
 end

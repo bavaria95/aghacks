@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025132524) do
+ActiveRecord::Schema.define(version: 20141025150149) do
 
   create_table "applies", force: true do |t|
     t.datetime "created_at"
@@ -75,6 +75,9 @@ ActiveRecord::Schema.define(version: 20141025132524) do
     t.text     "info"
     t.text     "skills"
     t.boolean  "is_confirmed"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
