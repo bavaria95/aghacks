@@ -1,6 +1,6 @@
-<%= @id.email %> <br>
+User email: <%= @id.email %> <br>
 
-<%= @id.username %>
+User name: <%= @id.username %>
 
 <% if @id == current_user %> <br>
 <%= link_to "Edit profile", edit_skills_path %>
