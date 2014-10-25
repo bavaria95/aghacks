@@ -77,6 +77,15 @@
                 vm.choosenProject = undefined;
             } else {
                 vm.choosenProject = project;
+
+                vm.caption = 'Apply to this project';
+                if (project.id === ApplyingProjectService.userData.project_id) {
+                    if (ApplyingProjectService.userData.is_confirmed) {
+                        vm.caption = 'Cancel my confirmation';
+                    } else {
+                        vm.caption = 'Remove my application';
+                    }
+                };
             }
 
             vm.choosenUser = undefined;

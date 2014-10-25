@@ -11,7 +11,6 @@
             timer = $timeout(function () {
                 $http.get('/api/users/1').
                     success(function (data) {
-                        $log.info(data);
                         self.userData = data;
                         refreshServer();
                     }).

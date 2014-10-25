@@ -67,7 +67,7 @@
       <p>Name: {{main.choosenProject.name}}</p>
       <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: <span ng-bind-html="main.choosenProject.info | linky"></span></p>
-    <p><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">Apply to this project</button></p>
+    <p><button class='btn btn-success' ng-click="main.applyToProject(main.choosenProject.id)">{{main.caption}}</button></p>
 
   </div>
 
