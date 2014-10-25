@@ -1,0 +1,3 @@
+m = $('#modal');
+m.html('<%= j(render partial: 'form', user: { skill: current_user }) %>');
+m.modal('show');
