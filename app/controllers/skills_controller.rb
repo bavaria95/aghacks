@@ -11,10 +11,10 @@ class SkillsController < ApplicationController
   def create
     @skill = Skill.create(skill_params)
     if @skill.save
-      redirect_to root_path
+      redirect_to skills_user
       flash[:success] = "Skill has been created!"
     else
-      redirect_to root_path
+      redirect_to redirect_to skills_user
       flash[:danger] = "Error!"
     end
   end

@@ -14,10 +14,10 @@ class EditSkillsController < ApplicationController
     if @skill.save
 		  @user_skills << @skill
       #binding.pry
-      redirect_to root_path
+      redirect_to edit_skills_path
       flash[:success] = "Skill has been created!"
     else
-    	redirect_to root_path
+    	redirect_to edit_skills_path
     	flash[:danger] = "Error!"
     	end
 	end
