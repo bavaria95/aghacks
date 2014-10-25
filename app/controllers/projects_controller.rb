@@ -16,9 +16,13 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.create(project_params)
     @creator = current_user
+    @apply = Apply.create
     if @project.save
       @project.users << @creator
-      #binding.pry
+      binding.pry
+      @creator.update_attributes(apply_id: @apply.id)
+
+      binding.pry
       redirect_to root_path
       flash[:success] = "Project has been created!"
     else
@@ -58,6 +62,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :team, :long_description, :skills_attributes => [:skill])
+    params.require(:project).permit(:name, :team, :long_description, :apply_id, :skills_attributes => [:skill])
   end
 end

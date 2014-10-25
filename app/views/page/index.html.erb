@@ -53,7 +53,7 @@
     <p>Name: {{main.choosenProject.name}}</p>
     <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
-    <p><button>Apply to this project</button></p>
+    <p><%= button_to 'Apply to this project', new_apply_post_path, method: :post, class: 'btn btn-success' %></p>
 </div>
 
 

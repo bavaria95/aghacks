@@ -23,7 +23,6 @@
   border-radius: 10px 10px 10px 10px;
 }
 
-
 .search_image {
   margin-left: -4px;
 }
@@ -37,6 +36,7 @@
   background-color: #48E8DE;
   width: 100%;
 }
+
 .search input[type=text] {
 width: 61%;
 padding: 0 2%;
@@ -47,6 +47,7 @@ color: #565656;
 border-top-left-radius: 7px;
 border-bottom-left-radius: 7px;
 }
+
 .search input {
 vertical-align: top;
 }
@@ -81,4 +82,8 @@ vertical-align: top;
   width: 100%;
   float: left;
   height: 30px;
+}
+
+.alert {
+  margin-top: 10px;
 }
