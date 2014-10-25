@@ -55,6 +55,9 @@
             vm.filteredProjects = _.filter(vm.projects, projectPredicate);
 
             vm.filteredUsers = _.filter(vm.users, userPredicate);
+
+            vm.choosenProject = undefined;
+            vm.choosenUser = undefined;
         }
 
         function showProjectDetails(project){

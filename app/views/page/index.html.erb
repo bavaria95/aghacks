@@ -1,8 +1,12 @@
 <section ng-controller="MainCtrl as main">
+<script type="text/javascript">
+<%= add_gritter("Welcome to HackMate!", :title => "Witamy na HackMate!",:time =>2000) %>
 
+
+</script> 
 <center><header class="myheader">
 <form class="search">
-  <input type="text" m ng-model="main.criteria" height="50" placeholder="Find your HackMate">
+  <input type="text" m ng-model="main.criteria" height="50" placeholder="Find your HackMate" onFocus="value=''">
   <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
   <center>
   <div class="buttons">
@@ -14,6 +18,7 @@
 <% end %>
   <%= link_to 'Add Project', new_project_path, class: "btn btn-primary" %>
 </div>
+
 
   </center>
 
@@ -44,10 +49,10 @@
     </ul>
 </div>
 
-<div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
+<center><div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
     <p>Name: {{main.choosenUser.name}}</p>
     <p>Description: {{main.choosenUser.info | cut:true:10}}</p>
-</div>
+</div> </center>
 
 <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
     <p>Name: {{main.choosenProject.name}}</p>

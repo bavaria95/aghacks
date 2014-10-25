@@ -11,7 +11,7 @@ class SkillsController < ApplicationController
   def create
     @skill = Skill.create(skill_params)
     if @skill.save
-      redirect_to skills_user
+      redirect_to skills_path
       flash[:success] = "Skill has been created!"
     else
       redirect_to redirect_to skills_user
@@ -28,10 +28,10 @@ class SkillsController < ApplicationController
     @skill = Skill.find(params[:id])
     @skill.update_attributes(skill_params)
     if @skill.save
-      redirect_to root_path
+      redirect_to skills_path
       flash[:notice] = "Edition ended successful!"
     else
-      redirect_to root_path
+      redirect_to skills_path
       flash[:alert] = "An error has accured, didn't you fill all fields?"
     end
   end
@@ -39,7 +39,7 @@ class SkillsController < ApplicationController
   def destroy
     @skill = Skill.find(params[:id])
     @skill.destroy
-    redirect_to root_path
+    redirect_to skills_path
     flash[:notice] = "Skill has been deleted!"
   end
 

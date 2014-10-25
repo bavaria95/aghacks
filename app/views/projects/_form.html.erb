@@ -1,10 +1,34 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
   <%= f.input :long_description %>
-  <%= f.fields_for :skills do |builder| %>
-    <%= render 'skill_skills', f: builder %>
-  <% end %>
-  <%= link_to_add_skills "Add Skill", f, :skills %>
+
+  <br>
+
+  <input type="text" value="Amsterdam,Washington" data-role="tagsinput" />
+    <script>
+    var citynames = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: {
+        url: '/skills.json',
+        filter: function(list) {
+          return $.map(list, function(cityname) {
+            return { name: cityname }; });
+        }
+      }
+    });
+    citynames.initialize();
+
+    $('input').tagsinput({
+      typeaheadjs: {
+        name: 'citynames',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: citynames.ttAdapter()
+      }
+    });
+    </script>
+
   <br>
   <%= f.submit %>
 <% end %>
