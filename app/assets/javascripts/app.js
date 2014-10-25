@@ -6,7 +6,7 @@
     }
     
     angular
-        .module('app', [])
+        .module('app', ['ngResource'])
         .config(appConfig);
     
 })();

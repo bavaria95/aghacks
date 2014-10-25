@@ -18,7 +18,7 @@
 <div style="width:300px; float:left;">
     Users
     <ul >
-        <li ng-repeat="user in main.filteredUsers | orderBy: 'username'">
+        <li class="project-overview" ng-repeat="user in main.filteredUsers | orderBy: 'username'" ng-click="main.showUserDetails(user)">
             <a ng-href="#">{{user.username}}</a>
         </li>
     </ul>
@@ -34,13 +34,13 @@
 </div>
 
 <div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
-    Name: {{main.choosenUser.name}}
-    Description: {{main.choosenUser.info}}
+    <p>Name: {{main.choosenUser.name}}</p>
+    <p>Description: {{main.choosenUser.info | cut:true:10}}</p>
 </div>
 
 <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
-    Name: {{main.choosenProject.name}}
-    Description: {{main.choosenProject.info}}
+    <p>Name: {{main.choosenProject.name}}</p>
+    <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
 </div>
 
 	<% if user_signed_in? %>

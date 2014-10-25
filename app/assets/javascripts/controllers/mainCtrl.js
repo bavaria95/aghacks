@@ -49,13 +49,27 @@
         }
 
         vm.showProjectDetails = function(project){
-            console.log(project.name);
+            if (!angular.isUndefined(vm.choosenProject) && vm.choosenProject.name === project.name) {
+                vm.choosenProject = undefined;
+            } else {
+                vm.choosenProject = project;
+            }
 
-            vm.choosenProject = project;
+            vm.choosenUser = undefined;
+        }
+
+        vm.showUserDetails = function(user){
+            if (!angular.isUndefined(vm.choosenUser) && vm.choosenUser.username === user.username) {
+                vm.choosenUser = undefined;
+            } else {
+                vm.choosenUser = user;
+            }
+
+            vm.choosenProject = undefined;
         }
     }
     
     angular
-        .module('app', ['ngResource'])
+        .module('app')
         .controller('MainCtrl', MainCtrl);
 })();
