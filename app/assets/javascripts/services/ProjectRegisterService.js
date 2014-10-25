@@ -5,10 +5,10 @@
         this.register = function(projectId) {
             if (ApplyingProjectService.userData.project_id === projectId) {
                 console.log('removing');
-                // return $http.post("users/remove/");
+                return $http.post("/api/users/remove/");
             } else {
                 console.log('registerd');
-                return $http.post("users/apply/" + projectId);
+                return $http.post("/api/users/apply/" + projectId);
             }
         }
     }

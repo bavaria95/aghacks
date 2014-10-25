@@ -14,10 +14,9 @@ Rails.application.routes.draw do
   match 'applies/create', to: 'applies#create', as: "new_apply_post", via: :post
 
   namespace :api, defaults: { format: 'json' } do
-    resources :projects, only: :show
     resources :users, only: :show
-    # match 'projects/:id/apply', to: 'projects#apply', as: "apply", via: [:post]
     match 'users/apply/:id', to: 'users#apply', as: "apply", via: [:post]
+    match 'users/remove', to: 'users#remove', as: "remove", via: [:post]
   end
 
 end

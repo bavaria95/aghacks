@@ -9,7 +9,7 @@
             var delayTime = 3000;
 
             timer = $timeout(function () {
-                $http.get('/api/users/1').
+                $http.get('/api/users/current-user').
                     success(function (data) {
                         self.userData = data;
                         refreshServer();
