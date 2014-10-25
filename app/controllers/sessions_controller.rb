@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       binding.pry
       user.email = request_info[:info][:email]
       user.username = request_info[:info][:name]
-      user.password = "haslo1234"
+      user.password = (0...16).map { (97 + rand(26)).chr }.join
       user.save
     else
       user = User.find_by_email(@email_request)
