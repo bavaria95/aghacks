@@ -11,12 +11,12 @@
   <center>
   <div class="buttons">
   <% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-primary", :method => :delete %>
+  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-primary", :method => :delete %>
 <% else %>
-  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-primary" %>
-  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-large btn-primary" %>
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-large btn-primary" %>
 <% end %>
-  <%= link_to 'Add Project', new_project_path, class: "btn btn-primary" %>
+  <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-primary" %>
 </div>
 
 
@@ -58,7 +58,7 @@
     <p>Name: {{main.choosenProject.name}}</p>
     <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
-    <p><button>Apply to this project</button></p>
+    <p><%= button_to 'Apply to this project', new_apply_post_path, method: :post, class: 'btn btn-success' %></p>
 </div>
 
 
