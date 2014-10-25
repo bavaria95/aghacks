@@ -1,46 +1,31 @@
 (function () {
     'use strict';
 
-    function projectContains(project, word) {
-        return project.name.indexOf(word) > -1
-            || project.info.indexOf(word) > -1
-            || containsAnySkill(project.skills, word);
-    }
-
-    function userContains(user, word) {
-        return user.username.indexOf(word) > -1;
-        // TODO Description
-            // || user.long_description.indexOf(word) > -1;
-            // || containsAnySkill(user.skills, word);
-    }
-
     function containsAnySkill(skills, word){
         return _.some(skills, function(skill){
             return skill.indexOf(word) > -1;
         });
     }
 
-    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory, ProjectsFactory) {
         var vm = this;
+
+        vm.projectContains = projectContains;
+        vm.userContains = userContains;
+
+        vm.showProjectDetails = showProjectDetails;
+        vm.showUserDetails = showUserDetails;
+        vm.applyToProject = ProjectRegisterService.register;
 
         UsersFactory.getUsers()
           .then(function () {
             vm.filteredUsers = UsersFactory.filteredUsers;
           });
 
-        vm.showProjectDetails = showProjectDetails;
-        vm.showUserDetails = showUserDetails;
-        vm.applyToProject = ProjectRegisterService.register;
-
-        var projectsFactory = $resource('/projects.json/:id', { id: '@id' });
-        var projects = projectsFactory.query();
-        vm.projects = projects;
-        vm.filteredProjects = projects;
-
-        // var usersFactory = $resource('/users.json/:id', { id: '@id' });
-        // var users = usersFactory.query();
-        // vm.users = users;
-        // vm.filteredUsers = users;
+        ProjectsFactory.getProjects()
+          .then(function () {
+            vm.filteredProjects = ProjectsFactory.filteredProjects;
+          });
 
         $scope.$watch(function($scope){
             return ApplyingProjectService.userData;
@@ -53,26 +38,27 @@
             console.log(userData);
         })
 
+        function projectContains(project) {
+            if(!vm.word)
+                return true;
+            
+            return project.name.indexOf(vm.word) > -1
+                || project.info.indexOf(vm.word) > -1
+                || containsAnySkill(project.skills, vm.word);
+        }
+
+        function userContains(user, word) {
+            if(!vm.word)
+                return true;
+            
+            return user.username.indexOf(vm.word) > -1;
+            // TODO Description
+                // || user.long_description.indexOf(word) > -1;
+                // || containsAnySkill(user.skills, word);
+        }
+
         vm.search = function(criteria){
-            var projectPredicate = function(proj)
-            {
-                return projectContains(proj, criteria);
-            }
-
-            var userPredicate = function(user)
-            {
-                return userContains(user, criteria);
-            }
-
-            if (!criteria){
-                projectPredicate = function() { return true;}
-                userPredicate = function() { return true;}
-            }
-
-            vm.filteredProjects = _.filter(vm.projects, projectPredicate);
-
-            vm.filteredUsers = _.filter(vm.users, userPredicate);
-
+            vm.word = criteria;
             vm.choosenProject = undefined;
             vm.choosenUser = undefined;
         }
