@@ -19,7 +19,7 @@
 <div>
     Projects:
     <ul >
-        <li class="project-overview" ng-repeat="project in main.filteredProjects" ng-click="main.showProjectDetails(project)">
+        <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
             <a ng-href="#">{{project.name}}</a>
         </li>
     </ul>
@@ -35,7 +35,7 @@
 <div>
     Users
     <ul >
-        <li ng-repeat="user in main.filteredUsers">
+        <li ng-repeat="user in main.filteredUsers | orderBy: 'username'">
             <a ng-href="#">{{user.username}}</a>
         </li>
     </ul>
