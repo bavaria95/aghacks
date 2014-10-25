@@ -18,12 +18,12 @@ class ProjectsController < ApplicationController
     @creator = current_user
     if @project.save
       @project.users << @creator
-      binding.pry
+      #binding.pry
       redirect_to root_path
-      flash[:notice] = "Project has been created!"
+      flash[:success] = "Project has been created!"
     else
       redirect_to root_path
-      flash[:notice] = "An error has accured, didn't you fill all fields?"
+      flash[:danger] = "An error has accured, didn't you fill all fields?"
     end
   end
 
@@ -37,10 +37,10 @@ class ProjectsController < ApplicationController
     @project.update_attributes(project_params)
     if @project.save
       redirect_to root_path
-      flash[:notice] = "Project has been updated!"
+      flash[:success] = "Project has been updated!"
     else
       redirect_to root_path
-      flash[:alert] = "An error has accured, didn't you fill all fields?"
+      flash[:danger] = "An error has accured, didn't you fill all fields?"
     end
   end
 

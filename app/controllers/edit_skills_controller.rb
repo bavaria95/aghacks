@@ -5,18 +5,25 @@ class EditSkillsController < ApplicationController
 
 	def new
 		@skill = Skill.new
-		
 	end
 
 	def create
 		@skill = Skill.create(skill_params)
-    	if @skill.save
-		current_user.skills << @skill
-      		redirect_to root_path
-      		flash[:notice] = "Skill has been created!"
-    	else
-      		redirect_to root_path
-      		flash[:notice] = "Error!"
+    @user_skills = current_user.skills
+
+    if @skill.save
+		  @user_skills << @skill
+      redirect_to root_path
+      flash[:success] = "Skill has been created!"
+    else
+    	redirect_to root_path
+    	flash[:danger] = "Error!"
     	end
 	end
+
+  private
+
+  def skill_params
+    params.require(:skill).permit(:skill)
+  end
 end
