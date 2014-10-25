@@ -1,17 +1,24 @@
 (function () {
     'use strict';
 
-    function MainCtrl($scope, $resource) {
-        console.log(1)
+    function projectContains(project, word) {
+        return project.name.indexOf(word) > -1
+            || project.long_description.indexOf(word) > -1;
+    }
 
+    function MainCtrl($scope, $resource) {
         var projectsFactory = $resource('/projects.json/:id', { id: '@id' });
         var projects = projectsFactory.query();
 
         $scope.projects = projects;
 
-        $scope.search = function(){
-            var pr = $scope.projects;
-            console.log(2)
+        $scope.filteredProjects = projects;
+
+        $scope.search = function(criteria){
+            $scope.filteredProjects = _.filter($scope.projects, function(proj)
+                {
+                    return projectContains(proj, criteria);
+                });
         }
     }
     
