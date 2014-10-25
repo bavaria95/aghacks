@@ -3,13 +3,21 @@
 
     function projectContains(project, word) {
         return project.name.indexOf(word) > -1
-            || project.long_description.indexOf(word) > -1;
+            || project.long_description.indexOf(word) > -1
+            || containsAnySkill(project.skills, word);
     }
 
     function userContains(user, word) {
         return user.username.indexOf(word) > -1;
         // TODO Description
             // || user.long_description.indexOf(word) > -1;
+            // || containsAnySkill(user.skills, word);
+    }
+
+    function containsAnySkill(skills, word){
+        return _.some(skills, function(skill){
+            return skill.indexOf(word) > -1;
+        });
     }
 
     function MainCtrl($resource) {
