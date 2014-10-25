@@ -1,9 +1,22 @@
 <section ng-controller="MainCtrl as main">
 
 <center><header class="myheader">
-<form class="search" style="magrin:auto 0;">
-  <input type="text" m ng-model="main.criteria" height="50" placeholder="Look for your HackMate">
+<form class="search">
+  <input type="text" m ng-model="main.criteria" height="50" placeholder="Find your HackMate">
   <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
+  <center>
+  <div class="buttons">
+  <% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-primary", :method => :delete %>
+<% else %>
+  <%= link_to'Sign in', new_user_session_path,  class: "btn btn-primary" %>
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+<% end %>
+  <%= link_to 'Add Project', new_project_path, class: "btn btn-primary" %>
+</div>
+
+  </center>
+
 </form>
 </center>
 
@@ -42,15 +55,11 @@
 
 <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
     <p>Name: {{main.choosenProject.name}}</p>
+    <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
 </div>
 
-	<% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to 'Sign in', new_user_session_path %> |
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
+
 
 
 </section>

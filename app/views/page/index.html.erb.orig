@@ -1,0 +1,80 @@
+<section ng-controller="MainCtrl as main">
+
+<center><header class="myheader">
+<form class="search" style="magrin:auto 0;">
+  <input type="text" m ng-model="main.criteria" height="50" placeholder="Look for your HackMate">
+  <input type="image" src="https://www.nofluffjobs.com/images/btn-search.png" value="Search" ng-click="main.search(main.criteria)" class="search_image" >
+</form>
+</center>
+
+</header>
+
+<%= link_to 'Add Project', new_project_path %>
+<<<<<<< HEAD
+
+<% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %> |
+  <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+=======
+<CENTER>
+<div class="project-details" ng-show="main.choosenProject">
+    Name: {{main.choosenProject.name}}
+    Description: {{main.choosenProject.info}}
+</div>
+</center>
+
+<div>
+    Projects:
+    <ul >
+        <li class="project-overview" ng-repeat="project in main.filteredProjects" ng-click="main.showProjectDetails(project)">
+            <a ng-href="#">{{project.name}}</a>
+        </li>
+    </ul>
+</div>
+
+
+
+>>>>>>> projects to the left
+
+<div style="width:300px; float:left;">
+    Users
+    <ul >
+        <li ng-repeat="user in main.filteredUsers | orderBy: 'username'">
+            <a ng-href="#">{{user.username}}</a>
+        </li>
+    </ul>
+</div>
+
+<<<<<<< HEAD
+<div style="width:300px; float:right;">
+    Projects:
+    <ul >
+        <li class="project-overview" ng-repeat="project in main.filteredProjects | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
+            <a ng-href="#">{{project.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="user-details" ng-show="main.choosenUser" style="width:600px;float:left;">
+    Name: {{main.choosenUser.name}}
+    Description: {{main.choosenUser.info}}
+</div>
+
+<div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
+    Name: {{main.choosenProject.name}}
+    Description: {{main.choosenProject.info}}
+</div>
+=======
+	<% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %> |
+  <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+
+>>>>>>> projects to the left
+
+</section>
