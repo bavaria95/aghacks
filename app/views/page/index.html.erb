@@ -40,6 +40,7 @@
 
 <div class="project-details" ng-show="main.choosenProject" style="width:600px;float:right;">
     <p>Name: {{main.choosenProject.name}}</p>
+    <p>Skills: {{main.choosenProject.skills | cuttags}}</p>
     <p>Description: {{main.choosenProject.info | cut:true:10}}</p>
 </div>
 
