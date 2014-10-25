@@ -1,11 +1,16 @@
 (function () {
     'use strict';
 
-    function ProjectRegisterService($http){
-         this.register = function(projectId) {
-            console.log('registerd');
-            return $http.post("projects/" + projectId + "/user/11");
-         }
+    function ProjectRegisterService($http, ApplyingProjectService){
+        this.register = function(projectId) {
+            if (ApplyingProjectService.userData.project_id === projectId) {
+                console.log('removing');
+                return $http.post("/api/users/remove/");
+            } else {
+                console.log('registerd');
+                return $http.post("/api/users/apply/" + projectId);
+            }
+        }
     }
     
     angular

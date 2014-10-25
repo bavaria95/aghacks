@@ -20,7 +20,7 @@
         });
     }
 
-    function MainCtrl($resource, ProjectRegisterService) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService) {
         var vm = this;
 
         vm.showProjectDetails = showProjectDetails;
@@ -36,6 +36,17 @@
         var users = usersFactory.query();
         vm.users = users;
         vm.filteredUsers = users;
+
+        $scope.$watch(function($scope){
+            return ApplyingProjectService.userData;
+        }, function(userData){
+            if (userData.is_confirmed) {
+                vm.myProject = _.findWhere(vm.projects, {id: userData.project_id});
+            } else {
+                vm.myProject = undefined;
+            }
+            console.log(userData);
+        })
 
         vm.search = function(criteria){
             var projectPredicate = function(proj)
@@ -66,6 +77,15 @@
                 vm.choosenProject = undefined;
             } else {
                 vm.choosenProject = project;
+
+                vm.caption = 'Apply to this project';
+                if (project.id === ApplyingProjectService.userData.project_id) {
+                    if (ApplyingProjectService.userData.is_confirmed) {
+                        vm.caption = 'Cancel my confirmation';
+                    } else {
+                        vm.caption = 'Remove my application';
+                    }
+                };
             }
 
             vm.choosenUser = undefined;
