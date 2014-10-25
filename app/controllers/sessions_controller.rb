@@ -4,22 +4,22 @@ class SessionsController < ApplicationController
   end
 
   def create
+    request_info = request.env['omniauth.auth']
 
-    @user = User.find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid])
-    @user = begin
-      user = User.create_from_omniauth(auth_hash)
-      user.email = "test@test.pl"
-      user.password = "test1234"
+    @email_request = request_info[:info][:email]
+    if User.find_by_email(@email_request) == nil
+      user = User.new
+      binding.pry
+      user.email = request_info[:info][:email]
+      user.username = request_info[:info][:name]
+      user.password = "haslo1234"
       user.save
-      user
-    end unless @user
-    if @user
-      #raise
-      sign_in @user
-      redirect_to root_url
     else
-      redirect_to root_url
+      user = User.find_by_email(@email_request)
     end
+    sign_in user
+    redirect_to root_url
+
   end
 
   def destroy

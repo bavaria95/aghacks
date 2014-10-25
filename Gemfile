@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
+gem 'omniauth-facebook'
 
 ###
 
