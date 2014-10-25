@@ -1,2 +1,48 @@
-<h1>Profiles#index</h1> 
-TODO: here should be redirect to profile of current user(or list of all users)
+<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+           <A href="edit.html" >Edit Profile</A>
+
+        <A href="edit.html" >Logout</A>
+       <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >  
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= current_user.username%></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                
+                
+                        
+                        <center><td> <td>Email :  </td> <%=current_user.email%>  </td></center>
+                        <center><td> <td>Date of registration :  </td> <%=current_user.remember_created_at%>  </td></center>
+                        <center><td> <td>Skills :  </td> <% current_user.skills.each do |skill| %>
+                        <span class="label label-info"><%= skill.skill %></span>
+                        <% end %>  </td></center>
+                        <center><td> <td>Last seen :  </td> <%=current_user.last_sign_in_at%>  </td></center>
+                        <% if current_user.role == 1 %>
+                          <center><td>  Creator of project № <%=current_user.project_id%>  </td></center>
+                         <%else%>
+                         	<center><td> Assigned to project № <%=current_user.project_id%>  </td></center>
+                         	<%end%>
+
+
+
+
+                      </tr>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
