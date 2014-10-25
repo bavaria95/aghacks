@@ -47,6 +47,12 @@
                     return userContains(user, criteria);
                 });
         }
+
+        vm.showProjectDetails = function(project){
+            console.log(project.name);
+
+            vm.choosenProject = project;
+        }
     }
     
     angular

@@ -11,10 +11,15 @@
 
 <%= link_to 'Add Project', new_project_path %>
 
+<div class="project-details" ng-show="main.choosenProject">
+    Name: {{main.choosenProject.name}}
+    Description: {{main.choosenProject.info}}
+</div>
+
 <div>
     Projects:
     <ul >
-        <li ng-repeat="project in main.filteredProjects">
+        <li class="project-overview" ng-repeat="project in main.filteredProjects" ng-click="main.showProjectDetails(project)">
             <a ng-href="#">{{project.name}}</a>
         </li>
     </ul>
@@ -35,3 +40,6 @@
         </li>
     </ul>
 </div>
+
+
+</section>
