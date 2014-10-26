@@ -2,7 +2,10 @@
     <h3 class="users">There <%if Project.all.length > 1 %>are<% else %>is<% end %> <%= Project.all.length %> free Project<%if Project.all.length > 1 %>s<% end %></h3>
     <ul >
         <li class="project-overview" ng-repeat="project in main.filteredProjects | filter : main.projectContains | orderBy: 'name'" ng-click="main.showProjectDetails(project)">
-            <a ng-href="#" class='user-nickname'>{{project.name}}</a>
+            <a ng-href="#" class='user-nickname'>
+                {{project.name}}
+                <colorfull-skills skills="project.skills"></colorfull-skills>
+            </a>
         </li>
     </ul>
 </div>
