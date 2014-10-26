@@ -11,7 +11,7 @@
         });
     }
 
-    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory, ProjectsFactory, ColorTagService) {
+    function MainCtrl($resource, $scope, ProjectRegisterService, ApplyingProjectService, UsersFactory, ProjectsFactory, ColorTagService, NeedConfirmationService) {
         var vm = this;
 
         vm.projectContains = projectContains;
@@ -44,6 +44,12 @@
             if (vm.choosenProject) {
                 refreshCaption();
             };
+        })
+
+        $scope.$watch(function($scope){
+            return NeedConfirmationService.confirmations;
+        }, function(confirmations){
+            vm.showConfirmations = confirmations && confirmations.length;
         })
 
         function projectContains(project) {

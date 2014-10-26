@@ -12,7 +12,6 @@
     <%= render 'show_info' %>
 
   </div>
-
   <% if user_signed_in? && !current_user.project.nil? %>
     <% if !current_user.project.users.nil? && !current_user.project.nil? && (current_user.is_confirmed == nil) == true %>
       <div id="applied_users">
