@@ -12,7 +12,7 @@
           <% else %>
             <%= link_to 'Edit Your Project', edit_project_path(@project), class: 'btn btn-large btn-custom', remote: true %>
           <% end %>
-          <%= link_to 'Edit your profile', edit_user_registration_path(current_user), class: "btn btn-large btn-custom" %>
+          <%= link_to 'Edit Profile / Skills', edit_user_registration_path(current_user), class: "btn btn-large btn-custom" %>
           <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-large btn-custom", :method => :delete %>
           <br>
           <br>
