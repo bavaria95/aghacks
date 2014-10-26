@@ -33,7 +33,17 @@ module Api
 
         render json: { status: "ok" }, status: 200
       end
+    end
 
+    def needConfirmation
+      @user_find = current_user
+
+      # @user_find.project_id = nil
+      # @user_find.is_confirmed = nil
+      
+      # @user_find.save!
+
+      render json: { status: "ok" }, status: 200
     end
   end
 end

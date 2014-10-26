@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: :show
     match 'users/apply/:id', to: 'users#apply', as: "apply", via: [:post]
     match 'users/remove', to: 'users#remove', as: "remove", via: [:post]
+    match 'users/needConfirmation', to: 'users#needConfirmation', as: "needConfirmation", via: [:get]
   end
 
 end
