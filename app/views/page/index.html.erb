@@ -11,4 +11,30 @@
 
   </div>
 
+  <% if user_signed_in? && !current_user.project.nil? %>
+    <% if !current_user.project.users.nil? && !current_user.project.nil? && (current_user.is_confirmed == nil) == false %>
+      <div id="applied_users">
+        <h3>Requests to your team:</h3>
+        <% if current_user.project.users.where(is_confirmed: false).length > 0 %>
+          <% current_user.project.users.where(is_confirmed: false).each do |applier| %>
+            <b>username:</b> <%= applier.username %>
+            <br>
+            <b>email:</b> <%= applier.email %>
+            <br>
+            <b>skills:</b>
+            <% applier.skills.each do |skill| %>
+              <%= skill.skill %>
+            <% end %>
+            <br>
+            <br>
+            <%= link_to 'Accept to team', accept_request_path(applier), class: 'btn btn-success', method: :post %>
+            <%= link_to 'Decline', decline_request_path(applier), class: 'btn btn-danger', method: :post %>
+            <br>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
 </section>

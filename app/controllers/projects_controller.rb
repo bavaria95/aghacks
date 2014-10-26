@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    render :show_form
+    render :new
   end
 
   def create
@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
         @project.skills << Skill.create(skill: @skills[i])
       end
       @project.update_attributes(creator: @creator.username)
-      @project.users << @creator
-      #@creator.project = @project
+      @creator.project = @project
+      @creator.save
       redirect_to root_path
       flash[:success] = "Project has been created!"
     else

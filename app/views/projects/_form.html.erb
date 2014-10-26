@@ -3,7 +3,7 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name, class: "form-control" %>
   <%= f.input :long_description %>
-  <%= f.input :skills, input_html: { id: "user_skills" } %>
+  <%= f.input :skills, input_html: { id: "user_skills", value: nil } %>
 
     <script>
     var citynames = new Bloodhound({

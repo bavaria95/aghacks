@@ -7,7 +7,7 @@
     <center>
       <div class="buttons">
         <% if user_signed_in? %>
-          <% if current_user.project == nil %>
+          <% if current_user.project == nil || @project == nil %>
             <%= link_to 'Add Project', new_project_path, class: "btn btn-large btn-custom", remote: true %>
           <% else %>
             <%= link_to 'Edit Your Project', edit_project_path(@project), class: 'btn btn-large btn-custom', remote: true %>
