@@ -35,6 +35,11 @@
         $scope.$watch(function($scope){
             return ApplyingProjectService.userData;
         }, function(userData){
+            if(!userData) {
+                vm.myProject = undefined;
+                return;
+            }
+
             if (userData.is_confirmed) {
                 vm.myProject = _.findWhere(vm.projects, {id: userData.project_id});
             } else {
@@ -79,6 +84,11 @@
         }
 
         function refreshCaption() {
+            if(!ApplyingProjectService.userData) {
+                vm.isMyProject = true;
+                return;
+            }
+
             vm.caption = 'Apply to this project';
             if (vm.choosenProject.id === ApplyingProjectService.userData.project_id) {
                 if (ApplyingProjectService.userData.is_confirmed) {
@@ -88,7 +98,7 @@
                 }
             };
 
-            vm.isMyProject = vm.choosenProject.creator === ApplyingProjectService.userData.username 
+            vm.isMyProject = vm.choosenProject.creator === ApplyingProjectService.userData.username
         }
 
         function showProjectDetails(project){
