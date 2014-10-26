@@ -6,9 +6,4 @@ class ProfilesController < ApplicationController
     @id = User.find(params[:id])
   end
 
-
-  # private
-  # def article_params
-  #   params.require(:user).permit(:id)
-  # end
 end

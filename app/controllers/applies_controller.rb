@@ -5,7 +5,6 @@ class AppliesController < ApplicationController
 
   def create
     @apply = Apply.new
-    #binding.pry
     if @apply.save
       @apply.users << current_user
       redirect_to root_path
@@ -14,9 +13,4 @@ class AppliesController < ApplicationController
     end
   end
 
-  # private
-
-  # def apply_params
-  #   params.require(:apply).permit(:id)
-  # end
 end
