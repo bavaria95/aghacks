@@ -1,6 +1,6 @@
 class PageController < ApplicationController
   def index
-    binding.pry
+    #binding.pry
     @projects = Project.all
     @users = User.all
 
