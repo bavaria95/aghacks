@@ -12,7 +12,7 @@
   </div>
 
   <% if user_signed_in? && !current_user.project.nil? %>
-    <% if !current_user.project.users.nil? && !current_user.project.nil? && (current_user.is_confirmed == nil) == false %>
+    <% if !current_user.project.users.nil? && !current_user.project.nil? && (current_user.is_confirmed == nil) == true %>
       <div id="applied_users">
         <h3>Requests to your team:</h3>
         <% if current_user.project.users.where(is_confirmed: false).length > 0 %>
